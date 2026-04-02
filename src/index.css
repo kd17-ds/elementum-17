@@ -1,7 +1,14 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Gerbil";
+  src: url("/src/assets/gerbil.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @theme {
-  --font-display: "Outfit", sans-serif;
+  --font-display: "Gerbil", sans-serif;
   --font-body: "DM Sans", sans-serif;
 }
 
