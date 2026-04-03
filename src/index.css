@@ -10,6 +10,7 @@
 @theme {
   --font-display: "Gerbil", sans-serif;
   --font-body: "DM Sans", sans-serif;
+  --breakpoint-xlmid: 1600px;
 }
 
 :root {

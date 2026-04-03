@@ -2,6 +2,7 @@ import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import MeetPeople from './components/MeetPeople/MeetPeople';
 import Services from './components/Services/Services';
+import Testimonial from './components/Testimonial/Testimonial';
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         <Hero />
         <MeetPeople />
         <Services />
+        <Testimonial />
       </main>
     </div>
   );
