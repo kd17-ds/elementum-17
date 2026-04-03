@@ -1,12 +1,17 @@
+import useReveal from "../../hooks/useReveal";
+
 export default function MeetPeople() {
+  const [ref1, vis1] = useReveal();
+  const [ref2, vis2] = useReveal();
+
   return (
-    <section className="relative w-full px-4 sm:px-8 lg:px-6 xl:px-40 py-16 md:py-24 lg:py-28 xl:py-36">
+    <section id="studio" className="relative w-full px-4 sm:px-8 lg:px-6 xl:px-40 py-16 md:py-24 lg:py-28 xl:py-36 scroll-mt-20 xl:scroll-mt-24">
 
       {/* Pink arc — curves between the two containers */}
       <img src="/shapes/pink arc long.png" alt="" className="absolute pointer-events-none select-none -z-10 top-[39%] right-0" />
 
       {/* Container 1 — text left, image right */}
-      <div className="relative flex flex-col sm:flex-row items-center justify-between gap-8 sm:gap-10 lg:gap-8 xl:gap-10 rounded-3xl px-6 sm:px-12 lg:px-10 xl:px-16 py-10 sm:py-12 lg:py-12 xl:py-16">
+      <div ref={ref1} className={`relative flex flex-col sm:flex-row items-center justify-between gap-8 sm:gap-10 lg:gap-8 xl:gap-10 rounded-3xl px-6 sm:px-12 lg:px-10 xl:px-16 py-10 sm:py-12 lg:py-12 xl:py-16 transition-all duration-1000 ease-out ${vis1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
 
         {/* Radial gradient blob */}
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
@@ -46,7 +51,7 @@ export default function MeetPeople() {
       </div>
 
       {/* Container 2 — image left, text right */}
-      <div className="relative flex flex-col-reverse sm:flex-row items-center justify-between gap-8 sm:gap-10 lg:gap-10 xl:gap-16 2xl:gap-72 px-6 sm:px-12 lg:px-10 xl:px-16 py-10 sm:py-12 lg:py-12 xl:py-16 mt-6 sm:mt-8 lg:mt-10 xl:mt-12">
+      <div ref={ref2} className={`relative flex flex-col-reverse sm:flex-row items-center justify-between gap-8 sm:gap-10 lg:gap-10 xl:gap-16 2xl:gap-72 px-6 sm:px-12 lg:px-10 xl:px-16 py-10 sm:py-12 lg:py-12 xl:py-16 mt-6 sm:mt-8 lg:mt-10 xl:mt-12 transition-all duration-1000 ease-out delay-100 ${vis2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
 
         {/* Triangle shapes — hidden on mobile */}
         <img src="/shapes/triangle shape.png" alt="" className="hidden xl:block absolute pointer-events-none select-none -z-10 sm:w-20 lg:w-40 xl:w-68 sm:bottom-6 sm:left-4 lg:bottom-80 xl:bottom-115 lg:left-6 xl:left-6" />

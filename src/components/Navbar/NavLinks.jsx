@@ -4,6 +4,17 @@ import { NAV_LINKS } from '../../constants/navLinks';
 export default function NavLinks({ mobile = false, onClose }) {
   const [hoveredLink, setHoveredLink] = useState(null);
 
+  function handleClick(e, href) {
+    if (href === '#home') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (href === '#faqs') {
+      e.preventDefault();
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+    if (onClose) onClose();
+  }
+
   if (mobile) {
     return (
       <nav className="flex flex-col px-4 sm:px-8 py-2">
@@ -11,7 +22,7 @@ export default function NavLinks({ mobile = false, onClose }) {
           <a
             key={index}
             href={link.href}
-            onClick={onClose}
+            onClick={(e) => handleClick(e, link.href)}
             className="text-base font-semibold text-(--text-primary) hover:text-(--text-secondary) py-4 border-b border-(--border-primary) last:border-none transition-colors duration-200"
           >
             {link.label}
@@ -27,6 +38,7 @@ export default function NavLinks({ mobile = false, onClose }) {
         <a
           key={index}
           href={link.href}
+          onClick={(e) => handleClick(e, link.href)}
           onMouseEnter={() => setHoveredLink(index)}
           onMouseLeave={() => setHoveredLink(null)}
           className="relative text-[14px] lg:text-base xl:text-[18px] leading-6 font-medium text-center transition-colors duration-200"

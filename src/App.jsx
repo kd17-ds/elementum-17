@@ -3,6 +3,7 @@ import Hero from './components/Hero/Hero';
 import MeetPeople from './components/MeetPeople/MeetPeople';
 import Services from './components/Services/Services';
 import Testimonial from './components/Testimonial/Testimonial';
+import Footer from './components/Footer/Footer';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Services />
         <Testimonial />
       </main>
+      <Footer />
     </div>
   );
 }

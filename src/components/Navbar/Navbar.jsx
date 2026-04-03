@@ -10,6 +10,7 @@ export default function Navbar() {
 
         <a
           href="#home"
+          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           className="text-xl lg:text-2xl xl:text-[28px] xl:leading-11.5 font-display text-(--text-primary) tracking-tight select-none"
         >
           Elementum

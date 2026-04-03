@@ -1,8 +1,12 @@
 import People from "./People";
+import useReveal from "../../hooks/useReveal";
 
 export default function Hero() {
+  const [headingRef, headingVisible] = useReveal(0.1);
+  const [paraRef, paraVisible] = useReveal(0.1);
+
   return (
-    <section className="relative w-full px-4 sm:px-8 lg:px-24 xl:px-40 my-12 md:my-24 lg:my-28 xl:my-36">
+    <section id="home" className="relative w-full px-4 sm:px-8 lg:px-24 xl:px-40 my-12 md:my-24 lg:my-28 xl:my-36 scroll-mt-20 xl:scroll-mt-24">
 
       {/* Left line arcs — visible from md up */}
       <div className="absolute inset-0 pointer-events-none select-none -z-10">
@@ -15,7 +19,10 @@ export default function Hero() {
 
       {/* Centered content */}
       <div className="relative z-10 text-center">
-        <h1 className="font-display font-normal text-(--text-primary) text-4xl sm:text-5xl md:text-7xl lg:text-6xl xl:text-8xl leading-snug md:leading-tight lg:leading-tight xl:leading-31.5">
+        <h1
+          ref={headingRef}
+          style={{ animationDelay: '0ms' }}
+          className={`font-display font-normal text-(--text-primary) text-4xl sm:text-5xl md:text-7xl lg:text-6xl xl:text-8xl leading-snug md:leading-tight lg:leading-tight xl:leading-31.5 transition-all duration-1000 ease-out ${headingVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
           <span className="sm:block">
             The{' '}
             <span className="relative inline-block">
@@ -43,7 +50,9 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className="mt-5 lg:mt-6 xl:mt-7 text-(--text-primary) mx-auto text-sm sm:text-base lg:text-xl xl:text-2xl max-w-sm sm:max-w-xl lg:max-w-none">
+        <p
+          ref={paraRef}
+          className={`mt-5 lg:mt-6 xl:mt-7 text-(--text-primary) mx-auto text-sm sm:text-base lg:text-xl xl:text-2xl max-w-sm sm:max-w-xl lg:max-w-none transition-all duration-1000 ease-out delay-150 ${paraVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
           We are a team of strategists, designers communicators, researchers. Togeather,
           <br className="hidden lg:block xl:block" />
           we belive that progress only hghappens when you refuse to play things safe.

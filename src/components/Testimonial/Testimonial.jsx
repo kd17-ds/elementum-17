@@ -12,13 +12,18 @@ const RIGHT_CUSTOMERS = [
   { src: '/customer/customer8.png', size: 'w-[295px]', y: 'translate-y-18', x: 'translate-x-72' },
 ];
 
+import useReveal from "../../hooks/useReveal";
+
 export default function Testimonial() {
+  const [headingRef, headingVis] = useReveal();
+  const [quoteRef, quoteVis] = useReveal();
+
   return (
-    <section className="relative w-full px-4 sm:px-8 py-12 md:py-16 xl:py-24">
+    <section id="testimonial" className="relative w-full px-4 sm:px-8 py-12 md:py-16 xl:py-24 scroll-mt-20 xl:scroll-mt-24">
       <div className="relative mx-auto max-w-7xl xlmid:min-h-160">
         {/* Center content */}
         <div className="relative z-10 mx-auto max-w-4xl flex flex-col items-center">
-          <h2 className="font-display font-normal text-(--text-primary) text-center text-3xl sm:text-4xl xl:text-5xl xl:leading-snug xl:tracking-tight max-w-2xl">
+          <h2 ref={headingRef} className={`font-display font-normal text-(--text-primary) text-center text-3xl sm:text-4xl xl:text-5xl xl:leading-snug xl:tracking-tight max-w-2xl transition-all duration-1000 ease-out ${headingVis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <span className="inline-block px-4 pb-1 bg-[#c8f0c8] rounded-full">
               What
             </span>{" "}
@@ -36,7 +41,7 @@ export default function Testimonial() {
           </h2>
 
           {/* Quote box */}
-          <div className="relative w-full mt-6 sm:mt-8 xl:mt-11 rounded-2xl sm:rounded-3xl xl:rounded-[60px] bg-green-50 px-6 sm:px-10 xl:px-14 py-6 sm:py-8 xl:py-10">
+          <div ref={quoteRef} className={`relative w-full mt-6 sm:mt-8 xl:mt-11 rounded-2xl sm:rounded-3xl xl:rounded-[60px] bg-green-50 px-6 sm:px-10 xl:px-14 py-6 sm:py-8 xl:py-10 transition-all duration-1000 ease-out delay-150 ${quoteVis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
             <div className="mx-auto max-w-4xl">
               <p className="text-(--text-primary) font-normal text-center text-sm sm:text-base xl:text-3xl leading-relaxed xl:leading-normal">
                 <span className="hidden xl:inline-flex items-center gap-1 mr-4 opacity-70 pointer-events-none select-none align-middle">
