@@ -29,7 +29,7 @@ export default function NavLinks({ mobile = false, onClose }) {
           href={link.href}
           onMouseEnter={() => setHoveredLink(index)}
           onMouseLeave={() => setHoveredLink(null)}
-          className="relative text-[14px] lg:text-[18px] leading-6 font-medium text-center transition-colors duration-200"
+          className="relative text-[14px] lg:text-base xl:text-[18px] leading-6 font-medium text-center transition-colors duration-200"
           style={{ color: 'var(--text-primary)' }}
         >
           {link.label}
