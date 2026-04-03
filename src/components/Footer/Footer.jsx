@@ -1,4 +1,8 @@
-﻿const COLUMNS = [
+import useReveal from "../../hooks/useReveal";
+import { revealClass } from "../../utils/reveal";
+import PurpleSemicircle from "../ui/PurpleSemicircle";
+
+const COLUMNS = [
   {
     title: 'Company',
     links: ['Home', 'Studio', 'Service', 'Blog'],
@@ -17,8 +21,6 @@
   },
 ];
 
-import useReveal from "../../hooks/useReveal";
-
 export default function Footer() {
   const [subscribeRef, subscribeVis] = useReveal();
   const [columnsRef, columnsVis] = useReveal();
@@ -27,47 +29,38 @@ export default function Footer() {
     <footer id="contact" className="relative w-full mt-40 bg-(--bg-secondary) overflow-hidden scroll-mt-20">
 
       {/* Subscribe section */}
-      <div ref={subscribeRef} className={`relative mx-auto max-w-7xl px-4 sm:px-8 xl:px-40 pt-24 sm:pt-28 xl:pt-36 flex flex-col items-center text-center transition-all duration-1000 ease-out ${subscribeVis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
+      <div
+        ref={subscribeRef}
+        className={`relative mx-auto max-w-7xl px-4 sm:px-8 xl:px-40 pt-24 sm:pt-28 xl:pt-36 flex flex-col items-center text-center ${revealClass(subscribeVis, 'translate-y-16')}`}
+      >
+        {/* Footer arcs */}
+        <img src="/shapes/footerarc.png" alt="" className="absolute top-0 left-[35%] xl:left-110 -translate-x-1/2 w-14 sm:w-24 md:w-32 xl:w-56 pointer-events-none select-none" />
+        <img src="/shapes/footerarc.png" alt="" className="absolute top-0 left-[50%] xl:left-137 -translate-x-1/2 w-14 sm:w-24 md:w-32 xl:w-56 pointer-events-none select-none" />
 
-        {/* Footer arc */}
-        <img
-          src="/shapes/footerarc.png"
-          alt=""
-          className="absolute top-0 left-[35%] xl:left-110 -translate-x-1/2 w-14 sm:w-24 md:w-32 xl:w-56 pointer-events-none select-none"
-        />
-        <img
-          src="/shapes/footerarc.png"
-          alt=""
-          className="absolute top-0 left-[50%] xl:left-137 -translate-x-1/2 w-14 sm:w-24 md:w-32 xl:w-56 pointer-events-none select-none"
-        />
-
-        {/* Heading */}
         <h2 className="font-display font-normal mt-2 text-(--text-primary) text-4xl sm:text-5xl md:text-6xl xl:text-[100px] xl:leading-[116px]">
           Subscribe to our newsletter
         </h2>
-
-        {/* Subtext */}
         <p className="mt-3 text-sm sm:text-base xl:text-2xl xl:leading-9 text-(--text-secondary)">
           To make your stay special and even more memorable
         </p>
-
-        {/* Button */}
-        <button className="mt-6 xl:mt-9 bg-(--text-primary) text-white font-bold text-sm sm:text-base xl:text-xl xl:leading-[30px] px-8 xl:px-[46px] py-3 xl:py-[21px] rounded-full">
+        <button className="mt-6 xl:mt-9 bg-(--text-primary) text-white font-bold text-sm sm:text-base xl:text-xl xl:leading-7.5 px-8 xl:px-11.5 py-3 xl:py-5.25 rounded-full">
           Subscribe Now
         </button>
-
       </div>
 
       {/* Purple semicircle */}
-      <div className="absolute pointer-events-none select-none top-[8%] right-[2%] md:right-[4%] xl:right-[7%] rotate-120 w-8 h-4 sm:w-12 sm:h-6 md:w-20 md:h-10 xl:w-[155.76px] xl:h-[77.88px] bg-[#934CEC] rounded-t-full" />
+      <PurpleSemicircle className="absolute top-[8%] right-[2%] md:right-[4%] xl:right-[7%] w-8 h-4 sm:w-12 sm:h-6 md:w-20 md:h-10 xl:w-[155.76px] xl:h-[77.88px]" />
 
       {/* Divider */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-8 xl:px-40 mt-10 sm:mt-14 xl:mt-[100px] mb-10 sm:mb-14 xl:mb-[100px]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-8 xl:px-40 mt-10 sm:mt-14 xl:mt-25 mb-10 sm:mb-14 xl:mb-25">
         <hr className="border-(--border-primary)" />
       </div>
 
       {/* Footer columns */}
-      <div ref={columnsRef} className={`mx-auto max-w-7xl px-4 sm:px-8 xl:px-40 transition-all duration-1000 ease-out delay-100 ${columnsVis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+      <div
+        ref={columnsRef}
+        className={`mx-auto max-w-7xl px-4 sm:px-8 xl:px-40 delay-100 ${revealClass(columnsVis)}`}
+      >
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 sm:gap-8 xl:flex xl:justify-between">
           {COLUMNS.map((col, i) => (
             <div key={i}>

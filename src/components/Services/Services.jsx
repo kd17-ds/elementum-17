@@ -1,4 +1,7 @@
 import useReveal from "../../hooks/useReveal";
+import { revealClass } from "../../utils/reveal";
+import ZigZag from "../ui/ZigZag";
+import GreenPill from "../ui/GreenPill";
 
 const SERVICES = [
   {
@@ -17,10 +20,7 @@ const SERVICES = [
 
 export default function Services() {
   const [headingRef, headingVis] = useReveal();
-  const row0 = useReveal();
-  const row1 = useReveal();
-  const row2 = useReveal();
-  const reveals = [row0, row1, row2];
+  const reveals = [useReveal(), useReveal(), useReveal()];
 
   return (
     <section id="services" className="relative w-full px-4 sm:px-8 lg:px-16 xl:px-36 py-12 md:py-16 xl:py-24 scroll-mt-20 xl:scroll-mt-24">
@@ -31,15 +31,12 @@ export default function Services() {
       {/* Heading */}
       <h2
         ref={headingRef}
-        className={`font-display font-normal text-(--text-primary) text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight mb-8 md:mb-10 xl:mb-14 transition-all duration-1000 ease-out ${headingVis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+        className={`font-display font-normal text-(--text-primary) text-3xl sm:text-4xl lg:text-5xl xl:text-6xl xlmid:text-8xl leading-tight mb-8 md:mb-10 xl:mb-14 ${revealClass(headingVis)}`}
       >
         What we{' '}
-        <span className="inline-block px-3 pb-1 bg-[#c8f0c8] rounded-full">can</span>
+        <GreenPill className="px-3 pb-1">can</GreenPill>
         <br />
-        <span className="relative inline-block">
-          offer
-          <img src="/shapes/zig-zag-line.png" alt="" className="absolute left-0 w-full pointer-events-none select-none top-[85%] -z-10" />
-        </span>
+        <ZigZag lineClassName="left-0 w-full top-[85%]">offer</ZigZag>
         {' '}you!
       </h2>
 
@@ -52,9 +49,9 @@ export default function Services() {
               key={index}
               ref={rowRef}
               style={{ transitionDelay: `${index * 80}ms` }}
-              className={`grid grid-cols-[1fr_auto] md:grid-cols-[8rem_1fr_5rem] lg:grid-cols-[10rem_1fr_5rem] xl:grid-cols-[12rem_1fr_6rem] items-center py-4 sm:py-5 md:py-6 xl:py-8 border-b border-(--border-secondary) first:border-t gap-4 md:gap-0 transition-all duration-1000 ease-out ${rowVis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              className={`grid grid-cols-[1fr_auto] md:grid-cols-[8rem_1fr_5rem] lg:grid-cols-[10rem_1fr_5rem] xl:grid-cols-[12rem_1fr_6rem] items-center py-4 sm:py-5 md:py-6 xl:py-8 border-b border-(--border-secondary) first:border-t gap-4 md:gap-0 ${revealClass(rowVis, 'translate-y-10')}`}
             >
-              <p className="hidden md:block text-xs xl:text-sm text-(--text-secondary) leading-relaxed">{service.tag}</p>
+              <p className="hidden md:block text-xs xl:text-sm xlmid:text-3xl text-(--text-primary) leading-relaxed">{service.tag}</p>
               <h3 className="relative font-display font-normal text-(--text-primary) text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl md:text-center">
                 {index === 2 ? (
                   <>
